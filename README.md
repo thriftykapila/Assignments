@@ -1,3 +1,3 @@
 # Interview Assignments
 
-This project revolves around building one repositories for all the assignment works for different companies
+This branch revolves around building a dashboard view for Esper APIs
