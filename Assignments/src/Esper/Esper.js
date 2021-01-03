@@ -8,6 +8,7 @@ export default function Esper() {
   const [initials, setInitials] = useState("");
   const [showGroup, setShowGroup] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
 
   useEffect(() => {
     setLoading(true);
@@ -52,7 +53,13 @@ export default function Esper() {
   if (loading) {
     return <div style={{ margin: "50vh 0 0 50vw" }}>Loading...</div>;
   }
-
+  if (!loggedIn) {
+    return (
+      <button onClick={() => setLoggedIn(true)} className="login-btn">
+        Login to Dashboard
+      </button>
+    );
+  }
   return (
     <div>
       <div className="grid-container">
@@ -78,14 +85,38 @@ export default function Esper() {
             >
               <i className="fas fa-mobile-alt"></i> Device Groups
             </li>
-            <li className="sidenav__list-item">
+            <li
+              className="sidenav__list-item"
+              onClick={() => setLoggedIn(false)}
+            >
               <i className="fas fa-power-off"></i> Logout
             </li>
           </ul>
         </aside>
         <main className="main">
           {showGroup ? (
-            <div>Groups Details</div>
+            <>
+              <div className="grp-details">Groups Details</div>
+              <table>
+                <tr>
+                  <th>Sr. No.</th>
+                  <th>Group Name</th>
+                  <th>Device Count</th>
+                  <th>Date Created</th>
+                </tr>
+                {groups.map((ele, index) => {
+                  let newDate = ele.created_on.split("T")[0];
+                  return (
+                    <tr>
+                      <td>{index + 1}</td>
+                      <td>{ele.name}</td>
+                      <td>{ele.device_count}</td>
+                      <td>{newDate}</td>
+                    </tr>
+                  );
+                })}
+              </table>
+            </>
           ) : (
             <div className="main-cards">
               <div>
