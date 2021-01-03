@@ -1,2 +1,2 @@
 # OHLC-charts
-This project revolves around building OHLC charts for stock market data
+This project revolves around building one repositories for all the assignment works for different companies
