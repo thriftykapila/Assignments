@@ -1,10 +1,8 @@
-import Chart from "./Components/Chart";
 import Esper from "./Esper/Esper";
 
 function App() {
   return (
     <div>
-      {/* <Chart /> */}
       <Esper />
     </div>
   );
